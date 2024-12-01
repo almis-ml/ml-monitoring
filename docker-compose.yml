@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  fraud-detection-api:
+    build: .
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/"\]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  app_data:
