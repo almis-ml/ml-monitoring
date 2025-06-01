@@ -34,7 +34,14 @@ def test_model_exists():
     if os.path.exists(models_dir):
         model_files = [f for f in os.listdir(models_dir) if f.endswith('.joblib')]
         assert len(model_files) > 0, "No trained models found"
-        print(f"✅ Found {len(model_files)} trained models")
+
+        # As a light-weight sanity check on monitoring expectations, we also
+        # enforce that at least one "final" or "production" model exists.
+        prod_like = [f for f in model_files if "final" in f.lower() or "prod" in f.lower()]
+        assert len(prod_like) > 0, "No final/production-like model artefacts found in models directory"
+
+        print(f"✅ Found {len(model_files)} trained models "
+              f"({len(prod_like)} marked as final/production)")
 
 def test_requirements():
     """Test that requirements.txt has essential packages"""
