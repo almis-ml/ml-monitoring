@@ -7,7 +7,7 @@ import time
 
 def main():
     print("="*60)
-    print("ML MODEL MONITORING SYSTEM - PORTFOLIO DEMO")
+    print("ML MODEL MONITORING SYSTEM -- PORTFOLIO DEMO")
     print("="*60)
     print("Industry-Level Fraud Detection with Real-Time Monitoring")
     print()
