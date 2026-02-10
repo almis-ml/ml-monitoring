@@ -9,7 +9,7 @@ def main():
     print("="*60)
     print("ML MODEL MONITORING SYSTEM - PORTFOLIO DEMO")
     print("="*60)
-    print("Industry-Level Fraud Detection with Real-Time Monitoring")
+    print("Industry-Level Fraud Detection with Real-Time Monitoring ")
     print()
     
     # System Status
