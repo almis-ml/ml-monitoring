@@ -57,7 +57,20 @@ try {
         $dateStr = $current.ToString("yyyy-MM-dd")
         $line    = "$dateStr - Routine monitoring checks, documentation polishing, and minor maintenance."
 
-        Add-Content -Path $logPath -Value $line
+        # Append with simple retry logic to avoid transient file locks
+        $appended = $false
+        for ($i = 0; $i -lt 5 -and -not $appended; $i++) {
+            try {
+                Add-Content -Path $logPath -Value $line
+                $appended = $true
+            }
+            catch {
+                if ($i -eq 4) {
+                    throw
+                }
+                Start-Sleep -Milliseconds 300
+            }
+        }
 
         $env:GIT_AUTHOR_DATE    = "$dateStr 12:00:00"
         $env:GIT_COMMITTER_DATE = "$dateStr 12:00:00"
