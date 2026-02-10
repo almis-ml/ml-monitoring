@@ -40,7 +40,7 @@ def test_model_exists():
         prod_like = [f for f in model_files if "final" in f.lower() or "prod" in f.lower()]
         assert len(prod_like) > 0, "No final/production-like model artefacts found in models directory"
 
-        print(f"✅ Found {len(model_files)} trained models "
+        print(f"✅ Found {len(model_files)} trained models"
               f"({len(prod_like)} marked as final/production)")
 
 def test_requirements():
