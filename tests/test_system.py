@@ -26,7 +26,7 @@ def test_data_structure():
         df = pd.read_csv("data/processed/X_test.csv")
         assert len(df.columns) == 30, f"Expected 30 features, got {len(df.columns)}"
         assert len(df) > 0, "Test data should not be empty"
-        print("✅ Data structure validated")
+        print("✅ Data structure validated.")
 
 def test_model_exists():
     """Test that trained model exists"""
